@@ -57,15 +57,18 @@ function buildMetadata(sample) {
 function buildCharts(sample) {
   // 2. Use d3.json to load and retrieve the samples.json file 
   d3.json("samples.json").then((data) => {
-    // 3. Create a variable that holds the samples array.
+    // 3. Create a variable that holds the samples array. 
     var samples = data.samples;
-    var metaData = data.metaData;
+    var metaData = data.metadata;
 
+    console.log("Hello")
+    
     // 4. Create a variable that filters the samples for the object with the desired sample number.
     var sampleFilter = samples.filter(sampleObj => sampleObj.id == sample);
 
     // (Deliverable Three) 1. Create a variable that filters the metadata array for the object with the desired sample number.
     var metadataArray = metaData.filter(sampleObj => sampleObj.id == sample);
+    
 
     //  5. Create a variable that holds the first sample in the array.
     var firstSample = sampleFilter[0];
@@ -144,7 +147,7 @@ function buildCharts(sample) {
     // 4. Create the trace for the gauge chart.
     var gaugeData = [{
       domain: {x:[0,1], y:[0,1]},
-      value: washFreq,
+      value: wfreq,
       title: {text: "Belly Button Wash Frequency"},
       type: "indicator",
       mode: "gauge+number",
@@ -177,3 +180,18 @@ height: 400,
     Plotly.newPlot("gauge", gaugeData, gaugeLayout);
   });
 }
+
+// // Initialize the dashboard
+// init();
+
+
+
+
+
+
+
+
+
+
+
+
